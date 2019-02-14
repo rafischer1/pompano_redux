@@ -1,9 +1,11 @@
 import React from 'react'
 import {FormatDateApi} from '../conversions/conversions'
 import { connect } from "react-redux";
+import LineGraphTide from './LineGraphTide';
 const Spinner = require("react-spinkit");
 
 const Tide = ({tide}) =>  {
+  const datesArr = ["now", "then"]
     console.log("this.state tide:", tide)
     if (tide[0] === undefined) {
       return <Spinner className="spinner" name="line-scale" color="teal" />;
@@ -27,6 +29,7 @@ const Tide = ({tide}) =>  {
          </tr>
          </tbody>
          </table>
+         <LineGraphTide tide={tide} datesArr={datesArr}/>
          </div>
  
  

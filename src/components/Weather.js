@@ -7,6 +7,7 @@ const Spinner = require('react-spinkit');
 
 const Weather = (weather) => {
   let data;
+  let rain;
   if (weather.weather[0] === undefined) {
     return <Spinner className="spinner" name="line-scale" color="teal" />;
   } else {
@@ -14,7 +15,12 @@ const Weather = (weather) => {
     console.log("data:", data)
   }
 
-  let rain = (+data.rain["1h"]/25.4).toFixed(2)
+  if (!data.rain) {
+    rain = 0
+  } else {
+    rain = (+data.rain["1h"] / 25.4).toFixed(2)
+  }
+
   
   // let name = weather.weather
     return (
